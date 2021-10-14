@@ -18,6 +18,7 @@ public class CreatureManager : MonoBehaviour {
     public static float Ztop;
     public static bool lightState;
 
+
     // Use this for initialization
     void Start () {
         _time = 0;
