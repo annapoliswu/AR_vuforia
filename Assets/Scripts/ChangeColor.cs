@@ -8,14 +8,15 @@ public class ChangeColor : MonoBehaviour
     public GameObject vButtonObj;
     public GameObject obj;
 
-    private Color objColor;
+    public Material matt;
+
+  
 
     // Start is called before the first frame update
     void Start()
     {
         vButtonObj.GetComponent<VirtualButtonBehaviour>().RegisterOnButtonPressed(OnButtonPressed);
         vButtonObj.GetComponent<VirtualButtonBehaviour>().RegisterOnButtonPressed(OnButtonReleased);
-        objColor = obj.GetComponent<Renderer>().material.color;
     }
 
     // Update is called once per frame
@@ -27,10 +28,10 @@ public class ChangeColor : MonoBehaviour
     public void OnButtonPressed(VirtualButtonBehaviour vButt)
     {
         //onOff = !onOff;
-        int vR = Random.Range(0, 255);
-        int vG = Random.Range(0, 255);
-        int vB = Random.Range(0, 255);
-        objColor = new Color(vR, vG, vB);
+        int vrand = Random.Range(0, 2);
+        Color[] colors = { Color.blue, Color.red, Color.green };
+        matt.SetColor("_Color", colors[vrand]);
+        Debug.Log("pressed");
 
     }
 

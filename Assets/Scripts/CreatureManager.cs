@@ -90,7 +90,18 @@ abstract public class Insect
     abstract public void Update(float time);
     abstract public void ChangeState(bool lightstate);
 
+    public Vector3 randomVector()
+    {
+        //float z = Random.Range(-100f, 100f);
+        //float x = Random.Range(-50f, 50f);
+        Vector3 randomVector = new Vector3(0f, 0f, 0f);
+        return randomVector;
+    }
+
 }
+
+
+
 public class Gnat : Insect
 {
     private float _curRadius;
@@ -104,14 +115,14 @@ public class Gnat : Insect
     public override void SpawnSelf(GameObject bugPrefab, TrackableBehaviour parentObj)
     {
         //Debug.Log("++++++++++++ spawing gnat mesh");
-        Vector3 startPos = new Vector3(0f, 0f, 0f);
+        Vector3 startPos = randomVector();
         myMesh = GameObject.Instantiate(bugPrefab, startPos, Quaternion.identity) as GameObject;
         myMesh.transform.parent = parentObj.transform;
         _curRadius          = Random.Range(0.2f, 0.3f);
         _curAngle           = Random.Range(120f, 60.0f);            // degrees to place starting bug in front of bulb
         _AnglePerSecond     = Random.Range(330f, 400.0f);           // speed of this bug
         _AnglePerSecond    *= Random.value < 0.5f ? 1 : -1;         // set to positive or negative 
-        _curZ               = CreatureManager.bulbZ;                // start bug at middle of bulb
+        _curZ               = _curZ = Random.Range(-2f, 2f);                 // start bug at middle of bulb
         _curZincrement      = Random.Range(0.001f, 0.005f);         // move bug orbit along z axis
         _curZincrement     *= Random.value < 0.5f ? 1 : -1;         // set to positive or negative
         _curRadiusIncrement = Random.Range(0.02f, 0.04f);
@@ -127,9 +138,9 @@ public class Gnat : Insect
     public override void Update(float time)
     {
 
-        float x = Mathf.Cos(Mathf.Deg2Rad * _curAngle) * _curRadius;
+        float x = _curZ;
         float y = Mathf.Sin(Mathf.Deg2Rad * _curAngle) * _curRadius;
-        float z = _curZ;
+        float z = Mathf.Sin(Mathf.Deg2Rad * _curAngle) * _curRadius;
 
         myMesh.transform.localPosition = new Vector3(x, y, z);
 
@@ -194,15 +205,15 @@ public class Moth : Insect
     public override void SpawnSelf(GameObject bugPrefab, TrackableBehaviour parentObj)
     {
         //Debug.Log("++++++++++++ spawing insect mesh");
-        Vector3 startPos = new Vector3(0f, 0f, 0f);
+        Vector3 startPos = randomVector();
         myMesh = GameObject.Instantiate(bugPrefab, startPos, Quaternion.identity) as GameObject;
         myMesh.transform.parent = parentObj.transform;
         _curRadius = Random.Range(0.2f, 0.3f);
         _curAngle = Random.Range(120f, 60.0f);            // degrees to place starting bug in front of bulb
-        _AnglePerSecond = Random.Range(270f, 330.0f);           // speed of this bug
+        _AnglePerSecond = Random.Range(270f, 400.0f);           // speed of this bug
         _AnglePerSecond *= Random.value < 0.5f ? 1 : -1;         // set to positive or negative NOT WORKING AS EXPECTED!!!! *********************
-        _curZ = CreatureManager.bulbZ;                // start bug at middle of bulb
-        _curZincrement = Random.Range(0.001f, 0.005f);         // move bug orbit along z axis
+        _curZ = Random.Range(-4f, 4f);               // start bug at middle of bulb
+        _curZincrement = Random.Range(0.001f, 0.01f);         // move bug orbit along z axis
         _curZincrement *= Random.value < 0.5f ? 1 : -1;         // set to positive or negative
         _curRadiusIncrement = Random.Range(0.02f, 0.04f);
         _curRadiusIncrement *= Random.value < 0.5f ? 1 : -1;         // set to positive or negative
@@ -272,4 +283,7 @@ public class Moth : Insect
             //Debug.Log("fly away fly away fly away my little doves " + _curRadiusIncrement);
         }
     }
+
+    
+
 }
