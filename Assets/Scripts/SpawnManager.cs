@@ -8,8 +8,13 @@ public class SpawnManager : MonoBehaviour
     public GameObject obj;
 
     public int spawnHeight = 25;
-    public int spawnInterval = 5;
-    public int lifeTime = 10;
+    public int spawnRadius = 5;
+
+    public int spawnInterval = 3;
+    public int holdBeforeDrop = 4;
+    public int lifeTime = 20;
+
+
 
     private List<GameObject> objList = new List<GameObject>();
 
@@ -42,10 +47,24 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnObj()
     {
-        float x = Random.Range(0F, 10F);
-        Vector3 startPosition = new Vector3(x, spawnHeight, x) + transform.position;
+        float angle = Random.Range(0, Mathf.PI * 2);
+        float x = Mathf.Sin(angle) * spawnRadius;
+        float z = Mathf.Cos(angle) * spawnRadius;
+
+        Vector3 startPosition = new Vector3(x, spawnHeight, z) + transform.position; //make relative posn
         GameObject objToAdd = GameObject.Instantiate(obj, startPosition, Quaternion.identity);
+
+
+        obj.GetComponent<Rigidbody>().useGravity = false;
+        StartCoroutine(DropObj(objToAdd, holdBeforeDrop)); // 1 second
         objList.Add(objToAdd);
+
+    }
+
+    private IEnumerator DropObj(GameObject obj, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        obj.GetComponent<Rigidbody>().useGravity = true;
     }
 
     private void DespawnObj()
