@@ -19,12 +19,14 @@ public class PlayerBasket : MonoBehaviour
      
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "FallingObject")
+        if(other.gameObject.tag == "FallingObject")
         {
             audioManager.Play("ItemGet");
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
         }
     }
+
+  
 }

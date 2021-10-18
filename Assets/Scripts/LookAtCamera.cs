@@ -5,7 +5,7 @@ using UnityEngine;
 public class LookAtCamera : MonoBehaviour
 {
     public Camera target;
-    public float startingY;
+    public float startingY = 13;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,7 @@ public class LookAtCamera : MonoBehaviour
     void Update()
     {
         Vector3 lookDirect = target.transform.position;
-        lookDirect.y = transform.position.y;
+        lookDirect.y = startingY;
         transform.LookAt(lookDirect);
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - FallingObject
+  - Player Basket
   layers:
   - Default
   - TransparentFX

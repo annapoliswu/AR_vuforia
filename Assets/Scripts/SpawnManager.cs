@@ -1,21 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Vuforia;
 
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager instance = null;
-    public GameObject obj;
 
-    public int spawnHeight = 25;
-    public int spawnRadius = 5;
+    public float spawnHeight = 25;
+    public float spawnRadius = 5;
 
     public int spawnInterval = 3;
     public int holdBeforeDrop = 4;
     public int lifeTime = 20;
 
 
-
+    public List<GameObject> objPrefabs = new List<GameObject>();
     private List<GameObject> objList = new List<GameObject>();
 
     private void Awake()
@@ -28,6 +28,12 @@ public class SpawnManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        foreach(GameObject prefab in objPrefabs)
+        {
+            prefab.tag = "FallingObject";
+        }
+
     }
 
 
@@ -47,15 +53,17 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnObj()
     {
+        int objNumber = Random.Range(0, objPrefabs.Count);
         float angle = Random.Range(0, Mathf.PI * 2);
         float x = Mathf.Sin(angle) * spawnRadius;
         float z = Mathf.Cos(angle) * spawnRadius;
 
-        Vector3 startPosition = new Vector3(x, spawnHeight, z) + transform.position; //make relative posn
-        GameObject objToAdd = GameObject.Instantiate(obj, startPosition, Quaternion.identity);
+        Vector3 startPosition = new Vector3(x, spawnHeight, z);
+        GameObject objToAdd = GameObject.Instantiate(objPrefabs[objNumber], startPosition, Quaternion.identity);
 
+        objToAdd.GetComponent<Rigidbody>().useGravity = false;
+        objToAdd.transform.parent = this.transform.parent; //set parent to imageTarget
 
-        obj.GetComponent<Rigidbody>().useGravity = false;
         StartCoroutine(DropObj(objToAdd, holdBeforeDrop)); // 1 second
         objList.Add(objToAdd);
 
