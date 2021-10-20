@@ -21,8 +21,13 @@ public class PlayerBasket : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "FallingObject")
+        FallingObject fObj = other.gameObject.GetComponent<FallingObject>();
+        if ( fObj != null)
         {
+            if(fObj.data.type == "Bomb")
+            {
+                //end game? or play other sounds etc
+            }
             audioManager.Play("ItemGet");
             Destroy(other.gameObject);
         }

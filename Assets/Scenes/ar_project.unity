@@ -168,7 +168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114573518}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25, y: -14.3, z: -25}
+  m_LocalPosition: {x: -25, y: -14.300003, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2138306547}
@@ -244,15 +244,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80625ab2ceea0430287f4535e2c0c915, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.38
+      value: -0.37999988
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80625ab2ceea0430287f4535e2c0c915, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.09000015
+      value: 0.08999634
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80625ab2ceea0430287f4535e2c0c915, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.23
+      value: -1.2299957
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 80625ab2ceea0430287f4535e2c0c915, type: 3}
       propertyPath: m_LocalRotation.w
@@ -319,7 +319,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698775067}
   m_LocalRotation: {x: 0.0429249, y: -0.67629623, z: 0.7343146, w: 0.0395334}
-  m_LocalPosition: {x: -0.3, y: 28.2, z: -0.5}
+  m_LocalPosition: {x: -0.29999995, y: 28.199997, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2138306547}
@@ -5393,7 +5393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1dbe42751aa349a892554007d2c7b75, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.3
+      value: -0.30000305
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1dbe42751aa349a892554007d2c7b75, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5577,6 +5577,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1172865770
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'snowflake_targetMaterial
+
+    25602'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 5172c03720dd4f14a3a05ed6e2e7c84f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1001 &1202843329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5679,7 +5709,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268208585}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -14.3, z: 0}
+  m_LocalPosition: {x: 0, y: -14.300003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2138306547}
@@ -5726,7 +5756,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325025414}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 12.53, z: -0}
+  m_LocalPosition: {x: 0, y: 12.529999, z: 0}
   m_LocalScale: {x: 1, y: 25, z: 1}
   m_Children:
   - {fileID: 1929325655}
@@ -5893,10 +5923,10 @@ MonoBehaviour:
   spawnInterval: 3
   holdBeforeDrop: 4
   lifeTime: 20
-  objPrefabs:
-  - {fileID: 5259913569946831675, guid: 6855c27f14b414b6b92a787105d555b2, type: 3}
-  - {fileID: 5614333167505906199, guid: 762e7039bdbee491db9c158796016790, type: 3}
-  - {fileID: 677766470178045153, guid: dbc73b36d8f9949b59c46f45db822d74, type: 3}
+  fallingObjects:
+  - {fileID: 11400000, guid: 12399929b2c832b43aff941b0a751495, type: 2}
+  - {fileID: 11400000, guid: 4c5a6c72a90e70a42aef79c98190f024, type: 2}
+  - {fileID: 11400000, guid: 3215c637db961ef459eda3eeb5282ebb, type: 2}
 --- !u!4 &1701037349
 Transform:
   m_ObjectHideFlags: 0
@@ -5944,11 +5974,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.17
+      value: -0.16999817
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.9
+      value: 3.899994
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6054,7 +6084,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989525339}
   m_LocalRotation: {x: 0.0429249, y: -0.67629623, z: 0.7343146, w: 0.0395334}
-  m_LocalPosition: {x: -0.3, y: 28.2, z: -0.5}
+  m_LocalPosition: {x: -0.29999995, y: 28.199997, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2138306547}
@@ -10932,36 +10962,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 9485b0c79d11e2e4d0007da98d76c639, type: 3}
   m_PrefabInstance: {fileID: 1908167113}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &2086559963
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'snowflake_targetMaterial
-
-    24340'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 5172c03720dd4f14a3a05ed6e2e7c84f, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &2138306541
 GameObject:
   m_ObjectHideFlags: 0
@@ -11011,7 +11011,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2086559963}
+  - {fileID: 1172865770}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

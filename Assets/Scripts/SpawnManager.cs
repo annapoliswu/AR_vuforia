@@ -15,7 +15,7 @@ public class SpawnManager : MonoBehaviour
     public int lifeTime = 20;
 
 
-    public List<GameObject> objPrefabs = new List<GameObject>();
+    public List<FallingObjectData> fallingObjects = new List<FallingObjectData>();
     private List<GameObject> objList = new List<GameObject>();
 
     private void Awake()
@@ -29,9 +29,9 @@ public class SpawnManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        foreach(GameObject prefab in objPrefabs)
+        foreach(FallingObjectData data in fallingObjects)
         {
-            prefab.tag = "FallingObject";
+            data.prefab.tag = "FallingObject";
         }
 
     }
@@ -53,13 +53,13 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnObj()
     {
-        int objNumber = Random.Range(0, objPrefabs.Count);
+        int objNumber = Random.Range(0, fallingObjects.Count);
         float angle = Random.Range(0, Mathf.PI * 2);
         float x = Mathf.Sin(angle) * spawnRadius;
         float z = Mathf.Cos(angle) * spawnRadius;
 
         Vector3 startPosition = new Vector3(x, spawnHeight, z);
-        GameObject objToAdd = GameObject.Instantiate(objPrefabs[objNumber], startPosition, Quaternion.identity);
+        GameObject objToAdd = GameObject.Instantiate(fallingObjects[objNumber].prefab, startPosition, Quaternion.identity);
 
         objToAdd.GetComponent<Rigidbody>().useGravity = false;
         objToAdd.transform.parent = this.transform.parent; //set parent to imageTarget

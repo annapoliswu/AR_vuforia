@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1326052200175000884}
   - component: {fileID: 3471461207423178198}
   - component: {fileID: 4580777588697287499}
+  - component: {fileID: 2203793268302413467}
   m_Layer: 0
   m_Name: star
   m_TagString: FallingObject
@@ -113,3 +114,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2720479, y: 1.2720479, z: 1.2720479}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2203793268302413467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677766470178045153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a140c1b573b4a41928c7555d56b618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 4c5a6c72a90e70a42aef79c98190f024, type: 2}
