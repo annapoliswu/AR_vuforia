@@ -5,19 +5,19 @@ using UnityEngine;
 public class PlayerBasket : MonoBehaviour
 {
     private AudioManager audioManager;
+    private UIManager uiManager;
+    public int score;
 
     // Start is called before the first frame update
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
+        uiManager = FindObjectOfType<UIManager>();
+        score = 0;
+        uiManager.setScore(score);
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-     
-    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -29,6 +29,8 @@ public class PlayerBasket : MonoBehaviour
                 //end game? or play other sounds etc
             }
             audioManager.Play("ItemGet");
+            score += fObj.data.points;
+            uiManager.setScore(score);
             Destroy(other.gameObject);
         }
     }
