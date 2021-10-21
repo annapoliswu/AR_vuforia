@@ -19,6 +19,7 @@ public class PlayerBasket : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
         score = 0;
         uiManager.SetText("ScoreScreen", "Score: "+score);
+        audioManager.Play("BackgroundMusic");
 
     }
 
@@ -33,19 +34,22 @@ public class PlayerBasket : MonoBehaviour
                 //end game? or play other sounds etc
                 GameObject explosionEffect = Instantiate(explosionPrefab, fObj.transform.position, fObj.transform.rotation);
                 Destroy(explosionEffect, 3);
+                audioManager.Play("Explosion");
                 StartCoroutine(EndGame(3));
             }
             else if(fObj.data.type == "Gift")
             {
                 GameObject confettiEffect = Instantiate(confettiPrefab, fObj.transform.position, fObj.transform.rotation);
                 Destroy(confettiEffect, 3);
+                audioManager.Play("GiftGet");
             }
             else if (fObj.data.type == "Star")
             {
                 GameObject stardustEffect = Instantiate(stardustPrefab, fObj.transform.position, fObj.transform.rotation);
                 Destroy(stardustEffect, 3);
+                audioManager.Play("StarGet");
             }
-            audioManager.Play("ItemGet");
+            
             score += fObj.data.points;
             uiManager.SetText("ScoreScreen", "Score: " + score);
             Destroy(other.gameObject);
