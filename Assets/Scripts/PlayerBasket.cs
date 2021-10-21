@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBasket : MonoBehaviour
 {
@@ -32,9 +33,7 @@ public class PlayerBasket : MonoBehaviour
                 //end game? or play other sounds etc
                 GameObject explosionEffect = Instantiate(explosionPrefab, fObj.transform.position, fObj.transform.rotation);
                 Destroy(explosionEffect, 3);
-                uiManager.HideScreen("ScoreScreen");
-                uiManager.SetText("GameOverScreen", score + " points");
-                uiManager.ShowScreen("GameOverScreen");
+                StartCoroutine(EndGame(5));
             }
             else if(fObj.data.type == "Gift")
             {
@@ -53,5 +52,15 @@ public class PlayerBasket : MonoBehaviour
         }
     }
 
-  
+    private IEnumerator EndGame(float duration)
+    {
+        yield return new WaitForSeconds(2);
+        uiManager.HideScreen("ScoreScreen");
+        uiManager.SetText("GameOverScreen", score + " points");
+        uiManager.ShowScreen("GameOverScreen");
+        yield return new WaitForSeconds(duration);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    }
+
+
 }
