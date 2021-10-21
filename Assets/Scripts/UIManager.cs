@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance = null;
-    private Canvas canvas;
-    private TMPro.TextMeshProUGUI scoreText; 
+    public Screen[] screens;
 
     void Awake()
     {
@@ -20,20 +20,37 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        canvas = GetComponentInChildren<Canvas>();
-        scoreText = GetComponentInChildren<TMPro.TextMeshProUGUI>();
-        
 
+        foreach(Screen s in screens)
+        {
+            s.panel.SetActive(false);
+        }
+
+        ShowScreen("ScoreScreen");
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private Screen GetScreen(string name)
     {
-        
+        return Array.Find(screens, screen => screen.name == name);
     }
 
-    public void setScore(int newScore)
+    public void SetText(string name, string str)
     {
-        scoreText.text = "Score: " + newScore;
+        Screen screen = GetScreen(name);
+        screen.editText.text = str;
     }
+
+    public void HideScreen(string name)
+    {
+        Screen screen = GetScreen(name);
+        screen.panel.SetActive(false);
+    }
+
+    public void ShowScreen(string name)
+    {
+        Screen screen = GetScreen(name);
+        screen.panel.SetActive(true);
+    }
+
 }

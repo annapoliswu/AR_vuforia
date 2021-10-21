@@ -17,7 +17,7 @@ public class PlayerBasket : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
         uiManager = FindObjectOfType<UIManager>();
         score = 0;
-        uiManager.setScore(score);
+        uiManager.SetText("ScoreScreen", "Score: "+score);
 
     }
 
@@ -45,7 +45,7 @@ public class PlayerBasket : MonoBehaviour
             }
             audioManager.Play("ItemGet");
             score += fObj.data.points;
-            uiManager.setScore(score);
+            uiManager.SetText("ScoreScreen", "Score: " + score);
             Destroy(other.gameObject);
         }
     }
