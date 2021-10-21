@@ -7,7 +7,7 @@ public class PlayerBasket : MonoBehaviour
 {
     private AudioManager audioManager;
     private UIManager uiManager;
-    public int score;
+    private int score;
     public GameObject explosionPrefab;
     public GameObject confettiPrefab;
     public GameObject stardustPrefab;
@@ -33,7 +33,7 @@ public class PlayerBasket : MonoBehaviour
                 //end game? or play other sounds etc
                 GameObject explosionEffect = Instantiate(explosionPrefab, fObj.transform.position, fObj.transform.rotation);
                 Destroy(explosionEffect, 3);
-                StartCoroutine(EndGame(5));
+                StartCoroutine(EndGame(3));
             }
             else if(fObj.data.type == "Gift")
             {
@@ -54,7 +54,7 @@ public class PlayerBasket : MonoBehaviour
 
     private IEnumerator EndGame(float duration)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         uiManager.HideScreen("ScoreScreen");
         uiManager.SetText("GameOverScreen", score + " points");
         uiManager.ShowScreen("GameOverScreen");
