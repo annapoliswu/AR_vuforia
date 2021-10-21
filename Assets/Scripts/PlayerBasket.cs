@@ -32,6 +32,9 @@ public class PlayerBasket : MonoBehaviour
                 //end game? or play other sounds etc
                 GameObject explosionEffect = Instantiate(explosionPrefab, fObj.transform.position, fObj.transform.rotation);
                 Destroy(explosionEffect, 3);
+                uiManager.HideScreen("ScoreScreen");
+                uiManager.SetText("GameOverScreen", score + " points");
+                uiManager.ShowScreen("GameOverScreen");
             }
             else if(fObj.data.type == "Gift")
             {
