@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 5259913569946831675, guid: 6855c27f14b414b6b92a787105d555b2, type: 3}
   type: Bomb
-  points: -10
+  points: 0
